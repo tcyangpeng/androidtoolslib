@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "androidToolsLib"
 include(":app")
- 
+include(":myUtils")
