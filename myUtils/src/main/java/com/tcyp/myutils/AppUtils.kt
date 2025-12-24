@@ -2,9 +2,11 @@ package com.tcyp.myutils
 
 import android.app.Application
 import android.content.Context
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
+import com.tencent.mmkv.BuildConfig
 
 /**
  * <app 工具类>
@@ -14,14 +16,14 @@ import android.os.Build
  * @version [版本号, 2025-12-09]
  * @since [V1]
  */
-class AppUtils private constructor(context: Context){
+class AppUtils{
     companion object {
         @Volatile
         private var instance: AppUtils? = null
 
-        fun getInstance(context: Context): AppUtils {
+        fun getInstance(): AppUtils {
             return instance ?: synchronized(this) {
-                instance ?: AppUtils(context.applicationContext).also { instance = it }
+                instance ?: AppUtils().also { instance = it }
             }
         }
     }
@@ -37,6 +39,7 @@ class AppUtils private constructor(context: Context){
     private var pm: PackageManager? = null
 
     init {
+        val context = AppHolder.app
         pm = context.packageManager
         try {
             info = pm!!.getPackageInfo(context.packageName, 0)
@@ -82,4 +85,11 @@ class AppUtils private constructor(context: Context){
      */
     val packageName: String
         get() = info?.packageName ?: "defaultPackageName"
+
+    /**
+     当前是否是Debug模式
+     */
+    val isDebug: Boolean
+        get() =  AppHolder.app.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+
 }
