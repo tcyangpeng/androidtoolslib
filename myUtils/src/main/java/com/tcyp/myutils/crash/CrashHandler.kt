@@ -105,7 +105,7 @@ object CrashHandler: Thread.UncaughtExceptionHandler {
         //清理旧日志
         cleanOldLogs(context)
         val crashTime = DATE_FORMAT.format(Date())
-        val appUtils = AppUtils.getInstance(context)
+        val appUtils = AppUtils.getInstance()
         val log = buildString {
             append("=============== Crash Report ===============\n")
             append("Time       : $crashTime\n")

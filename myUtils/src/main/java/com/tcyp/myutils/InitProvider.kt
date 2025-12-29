@@ -5,11 +5,13 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor
 import android.net.Uri
+import com.tcyp.myutils.image.ColiUtils
 
-class InitProvider  : ContentProvider() {
+class InitProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         AppHolder.app = context!!.applicationContext as Application
+        ColiUtils.init(AppHolder.app)
         return true
     }
     override fun delete(

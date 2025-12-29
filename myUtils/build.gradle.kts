@@ -49,10 +49,11 @@ dependencies {
     implementation(libs.play.services.ads.identifier)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
+//    implementation(libs.okhttp)
+//    implementation(libs.okhttp.logging)
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.okio:okio:3.9.0")
 
     implementation ("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
@@ -73,5 +74,15 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("androidx.room:room-paging:$roomVersion")  // 支持 Paging3
     ksp("androidx.room:room-compiler:$roomVersion")
+
+    implementation("io.coil-kt.coil3:coil:3.0.0")
+    // Compose 专用（包含 AsyncImage 等 composable）
+    implementation("io.coil-kt.coil3:coil-compose:3.0.0")
+    // 网络支持（强烈推荐加这个，否则只能加载本地图片）
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0")
+
+    // MQTT
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
+    implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
 
 }

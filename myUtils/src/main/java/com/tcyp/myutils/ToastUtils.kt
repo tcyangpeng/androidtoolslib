@@ -9,31 +9,63 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
+/**
+ * Toast工具类，提供多种方式显示Toast消息
+ */
 object ToastUtils {
     private var currentToast : Toast? = null
+
+    /**
+     * 显示短时Toast消息
+     * @param msg 要显示的消息内容
+     */
     fun showToastShort(msg: String) {
         Toast.makeText(AppHolder.app, msg, Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * 显示长时Toast消息
+     * @param msg 要显示的消息内容
+     */
     fun showToastLong(msg: String) {
         Toast.makeText(AppHolder.app, msg, Toast.LENGTH_LONG).show()
     }
 
+    /**
+     * 显示短时Toast消息（通过资源ID）
+     * @param resId 字符串资源ID
+     */
     fun showToastShort(@StringRes resId: Int) {
         val context = AppHolder.app
         Toast.makeText(context, context.getString( resId ), Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * 显示长时Toast消息（通过资源ID）
+     * @param resId 字符串资源ID
+     */
     fun showToastLong(@StringRes resId: Int) {
         val context = AppHolder.app
         Toast.makeText(context, context.getString( resId ), Toast.LENGTH_LONG).show()
     }
 
+    /**
+     * 显示指定时长的Toast消息
+     * @param msg 要显示的消息内容
+     * @param duration 显示时长
+     */
     fun showToast(msg: String, duration: Int) {
         val context = AppHolder.app
         Toast.makeText(context, msg, duration).show()
     }
 
+    /**
+     * 显示带图片的自定义Toast
+     * @param resId 文字内容的字符串资源ID
+     * @param imgResId 图片资源ID
+     * @param duration 显示时长，默认为Toast.LENGTH_LONG
+     * @param canCancel 是否可以取消之前的Toast，默认为false
+     */
     fun showImgToast(@StringRes resId: Int, @DrawableRes imgResId: Int, duration: Int = Toast.LENGTH_LONG, canCancel: Boolean = false) {
         val context = AppHolder.app
 //        val inflate = LayoutInflater.from(context)
@@ -73,7 +105,13 @@ object ToastUtils {
         currentToast?.show()
     }
 
-    fun showToast(msg: String, duration: Int, canCancel: Boolean) {
+    /**
+     * 显示指定时长的Toast消息，支持取消之前的Toast
+     * @param msg 要显示的消息内容
+     * @param duration 显示时长
+     * @param canCancel 是否可以取消之前的Toast
+     */
+    fun showToast(msg: String, duration: Int, canCancel: Boolean = false) {
         if (!canCancel) {
             showToast(msg, duration)
             return
@@ -88,6 +126,9 @@ object ToastUtils {
         currentToast?.show()
     }
 
+    /**
+     * 取消当前显示的Toast
+     */
     private fun cancelToast() {
         currentToast?.cancel()
     }

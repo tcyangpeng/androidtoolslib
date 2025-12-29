@@ -2,4 +2,7 @@
 <resources>
 
     <style name="Theme.AndroidToolsLib" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="ActivityTheme" parent="Theme.AppCompat.DayNight">        <!-- 其他属性 -->
+    </style>
 </resources>
