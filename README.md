@@ -1,5 +1,31 @@
 # ft-android-lib
 项目常用工具类集合
+## 发布
+https://jitpack.io/#tcyangpeng/androidtoolslib/Tag
+1、设置tag
+git tag v1.0.0
+git push origin v1.0.0
+
+2、JitPack 构建
+    https://jitpack.io
+    输入仓库地址
+    选择 v1.0.0
+    JitPack 构建成功
+3、implementation("com.github.你的用户名:仓库名:myUtils:v1.0.0")
+## 集成
+一、Add it in your settings.gradle.kts at the end of repositories:
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url = uri("https://jitpack.io") }
+		}
+	}
+
+二、在app的build.gradle中添加依赖：
+dependencies {
+implementation("com.github.tcyangpeng:androidtoolslib:Tag")
+}
 
 ## 工具类说明
 
